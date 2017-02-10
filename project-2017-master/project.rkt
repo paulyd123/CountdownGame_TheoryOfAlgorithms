@@ -12,6 +12,9 @@ numbers
 ;Outputs random number between 100 and 1000
 rand
 
+;Creates an empty list to hold the 6 numbers chosen from the list of numbers
+(define numChosen (list))
+
 
 
 
