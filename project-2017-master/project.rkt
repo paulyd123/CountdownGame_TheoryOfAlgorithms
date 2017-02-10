@@ -7,10 +7,11 @@
 numbers
 
 ;Random number generator that generates a number between the max and the min which is 100 to 1000
-(define rand(random 100 1000))
+(define rand(random 101 1000))
 
 ;Outputs random number between 100 and 1000
 rand
+
 
 
 
