@@ -13,8 +13,9 @@
 ;rand
 
 ;This creates an empty list to hold the 6 numbers chosen from the new list of numbers
-(define numChosen (list))
+;(define numChosen (list))
 
+;Defines list
 (define start(list -1 -1 -1 -1 1 1 1 1))
 
 ;This removes the duplicates and creates permutations
@@ -35,6 +36,11 @@
       (if (< s 2)
           #f
           (#t))))) ;tre/false
+
+(define numbers (list 100 50 10 6 5 1))
+(permutations numbers)
+
+
 
 
 
