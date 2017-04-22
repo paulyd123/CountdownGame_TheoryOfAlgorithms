@@ -25,6 +25,7 @@
 ;Computes the cartesian product of the given list
 ;(cartesian-product ops ops ops ops ops)
 
+
 ;Defining the list of numbers used to calculate the sum
 (define numbers(list 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 25 50 75 100))
 
@@ -43,7 +44,6 @@ rand
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
-
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
   (for/fold ([stack '()]) ([token expr])
@@ -58,17 +58,17 @@ rand
                    (reverse (cons x s)))])))
 
 ;Applies function from above to each element of the list which in turn gets the valid rpn
-(define (valid-rpn? e (s 0)) ;default value is 0
-  (if (null? e)
-      
-      (if (= s 1) #t #f)
-      
-      (if (= (car e) 1)
-          (valid-rpn? (cdr e) (+ s 1))
-          
-      (if (< s 2)
-          #f
-          (#t))))) ;true/false
+(define (valid-rpn? e (s 0)) ;default value is 0, s=stack
+  (if (null? e);If null is not e
+      (if (= s 1) #t #f);If stack =1
+      (if (number? (car e));If the first thing on the list is a number
+          (valid-rpn? (cdr e) (+ s 1));Add one to the stack if its a valid rpn
+      (if (> s 1);If s is less than 1
+          (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
+          (#f))))) ;true ot false
+
+
+
 
 
 
