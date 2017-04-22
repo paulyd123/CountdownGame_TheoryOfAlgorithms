@@ -28,41 +28,30 @@
 
 (map to-rpn perms)
 
-;Applies function from above to each element of the list which in turn gets the valin rpn
-;(define (valid-rpn? e (s 0)) ;default value is 0
- ; (if (null? e)
-  ;    (if (= s 1) #t #f)
-   ;   (if (= (car e) 1)
-    ;      (valid-rpn? (cdr e) (+ s 1))
-     ; (if (< s 2)
-      ;    #f
-       ;   (#t))))) ;true/false
-
-(define (calculate-RPN expr)
-  (for/fold ([stack '()]) ([token expr])
-    (printf "~a\t -> ~a~N" token stack)
-    (match* (token stack)
-     [((? number? n) s) (cons n s)]
-     [('+ (list x y s ___)) (cons (+ x y) s)]
-     [('- (list x y s ___)) (cons (- y x) s)]
-     [('* (list x y s ___)) (cons (* x y) s)]
-     [('/ (list x y s ___)) (cons (/ y x) s)]
-     [('^ (list x y s ___)) (cons (expt y x) s)]
-     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
-                   (reverse (cons x s)))])))
-
-
 ;Defines list of 6 numbers
 (define numbers (list 100 50 10 6 5 1))
 
 ;Returns a list of all permutations of the input list
-(permutations numbers) ;This function works without inspecting the elements and therefore ignores repeated elements which will result in repeated permutations
+;(permutations numbers) ;This function works without inspecting the elements and therefore ignores repeated elements which will result in repeated permutations
 
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
 ;Computes the cartesian product of the given list
-(cartesian-product ops ops ops ops)
+;(cartesian-product ops ops ops ops ops)
+
+;Applies function from above to each element of the list which in turn gets the valid rpn
+(define (valid-rpn? e (s 0)) ;default value is 0
+  (if (null? e)
+      (if (= s 1) #t #f)
+      (if (= (car e) 1)
+          (valid-rpn? (cdr e) (+ s 1))
+      (if (< s 2)
+          #f
+          (#t))))) ;true/false
+
+
+
 
 
 
