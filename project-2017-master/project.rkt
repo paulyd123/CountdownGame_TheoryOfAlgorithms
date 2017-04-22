@@ -21,26 +21,50 @@
 ;This removes the duplicates and creates permutations
 (define perms (remove-duplicates (permutations start)))
 
-;Here two 1s are added to the front of the list and then -1 to the end of the list 
+;Here two 1s are added to the front of the list and then -1 to the end of the list
+;1 representa a number whereas -1 represents an operator
 (define (to-rpn l)
  (append (list 1 1) l (list -1)))
 
 (map to-rpn perms)
 
 ;Applies function from above to each element of the list which in turn gets the valin rpn
-(define (valid-rpn? e (s 0)) ;default value is 0
-  (if (null? e)
-      (if (= s 1) #t #f)
-      (if (= (car e) 1)
-          (valid-rpn? (cdr e) (+ s 1))
-      (if (< s 2)
-          #f
-          (#t))))) ;tre/false
+;(define (valid-rpn? e (s 0)) ;default value is 0
+ ; (if (null? e)
+  ;    (if (= s 1) #t #f)
+   ;   (if (= (car e) 1)
+    ;      (valid-rpn? (cdr e) (+ s 1))
+     ; (if (< s 2)
+      ;    #f
+       ;   (#t))))) ;true/false
 
+(define (calculate-RPN expr)
+  (for/fold ([stack '()]) ([token expr])
+    (printf "~a\t -> ~a~N" token stack)
+    (match* (token stack)
+     [((? number? n) s) (cons n s)]
+     [('+ (list x y s ___)) (cons (+ x y) s)]
+     [('- (list x y s ___)) (cons (- y x) s)]
+     [('* (list x y s ___)) (cons (* x y) s)]
+     [('/ (list x y s ___)) (cons (/ y x) s)]
+     [('^ (list x y s ___)) (cons (expt y x) s)]
+     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
+                   (reverse (cons x s)))])))
+
+
+;Defines list of 6 numbers
 (define numbers (list 100 50 10 6 5 1))
-(permutations numbers)
-(define operations ( list '+ '- '* '/))
-(cartesian-product operations operations operations operations operations)
+
+;Returns a list of all permutations of the input list
+(permutations numbers) ;This function works without inspecting the elements and therefore ignores repeated elements which will result in repeated permutations
+
+;Defines list of operations needed
+(define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
+
+;Computes the cartesian product of the given list
+(cartesian-product ops ops ops ops)
+
+
 
 
 
