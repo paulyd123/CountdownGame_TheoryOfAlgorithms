@@ -16,29 +16,35 @@
 ;(define numChosen (list))
 
 ;Defines list
-(define start(list -1 -1 -1 -1 1 1 1 1))
+;(define start(list -1 -1 -1 -1 1 1 1 1))
 
 ;This removes the duplicates and creates permutations
-(define perms (remove-duplicates (permutations start)))
+;(define perms (remove-duplicates (permutations start)))
 
 ;Here two 1s are added to the front of the list and then -1 to the end of the list
 ;1 representa a number whereas -1 represents an operator
-(define (to-rpn l)
- (append (list 1 1) l (list -1)))
+;(define (to-rpn l)
+ ;(append (list 1 1) l (list -1)))
 
-(map to-rpn perms)
+;(map to-rpn perms)
 
 ;Defines list of 6 numbers
-(define numbers (list 100 50 10 6 5 1))
+;(define numbers (list 100 50 10 6 5 1))
 
 ;Returns a list of all permutations of the input list
 ;(permutations numbers) ;This function works without inspecting the elements and therefore ignores repeated elements which will result in repeated permutations
 
 ;Defines list of operations needed
-(define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
+;(define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
 ;Computes the cartesian product of the given list
 ;(cartesian-product ops ops ops ops ops)
+
+;Defining the list of numbers used to calculate the sum
+(define numbers(list 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 25 50 75 100))
+
+;Defines list of operations needed
+(define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
 ;Applies function from above to each element of the list which in turn gets the valid rpn
 (define (valid-rpn? e (s 0)) ;default value is 0
@@ -49,6 +55,8 @@
       (if (< s 2)
           #f
           (#t))))) ;true/false
+
+
 
 
 
