@@ -39,7 +39,8 @@
 
 (define numbers (list 100 50 10 6 5 1))
 (permutations numbers)
-
+(define operations ( list '+ '- '* '/))
+(cartesian-product operations operations operations operations operations)
 
 
 
