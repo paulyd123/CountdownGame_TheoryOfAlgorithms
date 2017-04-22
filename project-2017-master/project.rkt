@@ -46,6 +46,20 @@
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
+;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
+(define (calculate-RPN expr)
+  (for/fold ([stack '()]) ([token expr])
+    (printf "~a\t -> ~a~N" token stack)
+    (match* (token stack)
+     [((? number? n) s) (cons n s)]
+     [('+ (list x y s ___)) (cons (+ x y) s)]
+     [('- (list x y s ___)) (cons (- y x) s)]
+     [('* (list x y s ___)) (cons (* x y) s)]
+     [('/ (list x y s ___)) (cons (/ y x) s)]
+     [('^ (list x y s ___)) (cons (expt y x) s)]
+     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
+                   (reverse (cons x s)))])))
+
 ;Applies function from above to each element of the list which in turn gets the valid rpn
 (define (valid-rpn? e (s 0)) ;default value is 0
   (if (null? e)
