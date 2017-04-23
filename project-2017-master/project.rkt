@@ -50,9 +50,7 @@ numbers
      select4Numbers ;Prints 4 random numbers
       (randomListNumbers l))
 )
-
-
-
+(randomListNumbers numbers);Outputs random list
 
 (define select2Numbers (list));Creates list for selecting 4 numbers
 (define (randomListNumbers2 r);Creates list for random numbers  
@@ -60,12 +58,11 @@ numbers
   (set! r(remove randomNumber r)) 
   (set! select2Numbers (cons randomNumber select2Numbers))  
   (if (= (length select2Numbers) 2)
-     select2Numbers ;Prints 4 random numbers
+     select2Numbers ;Prints 2 random numbers
       (randomListNumbers2 r))
 )
+(randomListNumbers2 numbers);Outputs second random list
 
-(randomListNumbers numbers)
-(randomListNumbers2 numbers)
 
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
