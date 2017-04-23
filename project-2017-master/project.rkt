@@ -67,13 +67,13 @@ numbers
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
-(define select3Ops (list));Creates list for selecting 3 operations
+(define select4Ops (list));Creates list for selecting 3 operations
 (define (randomListOps r);Creates list for random operations  
   (define randomOp(list-ref r(random (length r))))  
   (set! r(remove randomOp r)) 
-  (set! select3Ops (cons randomOp select3Ops))  
-  (if (= (length select3Ops) 3)
-     select3Ops ;Prints 3 random operations
+  (set! select4Ops (cons randomOp select4Ops))  
+  (if (= (length select4Ops) 4)
+     select4Ops ;Prints 3 random operations
       (randomListOps r))
 )
 (randomListOps ops);Outputs random operation list
@@ -89,16 +89,9 @@ numbers
 )
 (randomListOp ops);Outputs second random operation list
 
-(define perms(remove-duplicates (permutations (append randomListOp randomListNumbers2)))); randomListNumbers2 randomListOp))))
-
-perms
-
-; Found code on stackoverflow about merging 2 lists together
-;(define (interleave select3Ops select4Numbers)
-;  (cond
-;    [(empty? select3Ops) select4Numbers]
-;    [else (cons (first select3Ops)(interleave select4Numbers (rest select3Ops)))]))
-;(interleave all-randOps numbers)
+;Merging lists
+(define perms(remove-duplicates (permutations (append select4Numbers select2Numbers)))); select4Ops selectOp))))
+perms;Output list
 
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
