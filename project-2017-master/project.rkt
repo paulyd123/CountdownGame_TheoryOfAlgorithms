@@ -52,6 +52,7 @@ numbers
 )
 (randomListNumbers numbers);Outputs random list
 
+
 (define select2Numbers (list));Creates list for selecting 4 numbers
 (define (randomListNumbers2 r);Creates list for random numbers  
   (define randomNumber(list-ref r(random (length r))))  
@@ -66,27 +67,38 @@ numbers
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
-(define selectOp (list));Creates list for selecting 4 numbers
-(define (randomListOp r);Creates list for random numbers  
-  (define randomOp(list-ref r(random (length r))))  
-  (set! r(remove randomOp r)) 
-  (set! selectOp (cons randomOp selectOp))  
-  (if (= (length selectOp) 1)
-     selectOp ;Prints 2 random numbers
-      (randomListOp r))
-)
-(randomListOp ops);Outputs second random list
-
-(define select3Ops (list));Creates list for selecting 4 numbers
-(define (randomListOps r);Creates list for random numbers  
+(define select3Ops (list));Creates list for selecting 3 operations
+(define (randomListOps r);Creates list for random operations  
   (define randomOp(list-ref r(random (length r))))  
   (set! r(remove randomOp r)) 
   (set! select3Ops (cons randomOp select3Ops))  
   (if (= (length select3Ops) 3)
-     select3Ops ;Prints 2 random numbers
+     select3Ops ;Prints 3 random operations
       (randomListOps r))
 )
-(randomListOps ops);Outputs second random list
+(randomListOps ops);Outputs random operation list
+
+(define selectOp (list));Creates list for selecting 3 random operations
+(define (randomListOp r);Creates list for random operations 
+  (define randomOp(list-ref r(random (length r))))  
+  (set! r(remove randomOp r)) 
+  (set! selectOp (cons randomOp selectOp))  
+  (if (= (length selectOp) 1)
+     selectOp ;Prints 1 random operation
+      (randomListOp r))
+)
+(randomListOp ops);Outputs second random operation list
+
+(define perms(remove-duplicates (permutations (append randomListOp randomListNumbers2)))); randomListNumbers2 randomListOp))))
+
+perms
+
+; Found code on stackoverflow about merging 2 lists together
+;(define (interleave select3Ops select4Numbers)
+;  (cond
+;    [(empty? select3Ops) select4Numbers]
+;    [else (cons (first select3Ops)(interleave select4Numbers (rest select3Ops)))]))
+;(interleave all-randOps numbers)
 
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
@@ -97,9 +109,14 @@ numbers
      [('+ (list x y s ___)) (cons (+ x y) s)]
      [('- (list x y s ___)) (cons (- y x) s)]
      [('* (list x y s ___)) (cons (* x y) s)]
-     [('/ (list x y s ___)) (cons (/ y x) s)]
+       [('/ (list x y s ___)) (if (= y 0)
+                                (cons 0 s)
+                                (if (= x 0)
+                                    (cons 0 s)
+                                    (cons (/ x y) s)))]
      [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
                    (reverse (cons x s)))])))
+
 
 ;Applies function from above to each element of the list which in turn gets the valid rpn
 (define (valid-rpn? e (s 0)) ;default value is 0, s=stack
@@ -111,6 +128,15 @@ numbers
           (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
           (#f))))) ;true ot false
 
+;Function to make a perm into a rpn expression and calculates the expression if valid rpn
+;(define (rpn-selected-numbers) list)
+;(define (rpn-selected-operators) list)
+
+;(define (make-rpn l)
+;  (if(valid-rpn? (append (list 1 1) l (list '*)))
+;     (calculate-RPN(append (list 1 1) l (list '*)))
+;     #f)
+;  )
 
 
 
