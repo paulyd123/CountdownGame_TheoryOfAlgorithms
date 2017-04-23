@@ -43,24 +43,24 @@ numbers
 
 (define select4Numbers (list));Creates list for selecting 4 numbers
 (define (randomListNumbers l);Creates list for random numbers  
-  (define randomNumber(list-ref l(random (length l))))  
-  (set! l(remove randomNumber l)) 
-  (set! select4Numbers (cons randomNumber select4Numbers))  
-  (if (= (length select4Numbers) 4)
+  (define randomNumber(list-ref l(random (length l))));Defines random number, refers to list
+  (set! l(remove randomNumber l))
+  (set! select4Numbers (cons randomNumber select4Numbers));
+  (if (= (length select4Numbers) 4);If the length of the select4Numbers list is 4
      select4Numbers ;Prints 4 random numbers
-      (randomListNumbers l))
+      (randomListNumbers l));Move to this list
 )
 (randomListNumbers numbers);Outputs random list
 
 
-(define select2Numbers (list));Creates list for selecting 4 numbers
+(define select2Numbers (list));Creates list for selecting 2 numbers
 (define (randomListNumbers2 r);Creates list for random numbers  
-  (define randomNumber(list-ref r(random (length r))))  
+  (define randomNumber(list-ref r(random (length r))));Defines random number, refers to list 
   (set! r(remove randomNumber r)) 
   (set! select2Numbers (cons randomNumber select2Numbers))  
-  (if (= (length select2Numbers) 2)
+  (if (= (length select2Numbers) 2);If the length of the select4Numbers list is 2
      select2Numbers ;Prints 2 random numbers
-      (randomListNumbers2 r))
+      (randomListNumbers2 r));Move to this list
 )
 (randomListNumbers2 numbers);Outputs second random list
 
@@ -69,23 +69,23 @@ numbers
 
 (define select4Ops (list));Creates list for selecting 3 operations
 (define (randomListOps r);Creates list for random operations  
-  (define randomOp(list-ref r(random (length r))))  
+  (define randomOp(list-ref r(random (length r))));Defines random operator, refers to list
   (set! r(remove randomOp r)) 
   (set! select4Ops (cons randomOp select4Ops))  
-  (if (= (length select4Ops) 4)
+  (if (= (length select4Ops) 4);If the length of the select4Ops list is 4
      select4Ops ;Prints 3 random operations
-      (randomListOps r))
+      (randomListOps r));Move to this list
 )
 (randomListOps ops);Outputs random operation list
 
 (define selectOp (list));Creates list for selecting 3 random operations
 (define (randomListOp r);Creates list for random operations 
-  (define randomOp(list-ref r(random (length r))))  
+  (define randomOp(list-ref r(random (length r))));Defines random operator, refers to list 
   (set! r(remove randomOp r)) 
   (set! selectOp (cons randomOp selectOp))  
-  (if (= (length selectOp) 1)
+  (if (= (length selectOp) 1);If the length of the selectOp list is 1
      selectOp ;Prints 1 random operation
-      (randomListOp r))
+      (randomListOp r));Move to this list
 )
 (randomListOp ops);Outputs second random operation list
 
@@ -125,10 +125,10 @@ numbers
 ;(define (rpn-selected-numbers) list)
 ;(define (rpn-selected-operators) list)
 
-(define (to-rpn l)
-  (cond [(valid-rpn? (append select2Numbers l selectOp))
-   (calculate-RPN (append select2Numbers l selectOp))]))
-(map to-rpn perms)
+(define (toRPN l);Defining toRPN list
+  (cond [(valid-rpn? (append select2Numbers l selectOp));(Condition)If it's a valid RPN join the lists
+   (calculate-RPN (append select2Numbers l selectOp))]));Calculate the RPN of the joined lists
+(map toRPN perms);Maps toRPN to perms list
 
 
 
