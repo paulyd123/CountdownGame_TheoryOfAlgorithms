@@ -87,12 +87,14 @@ What comes next is a condition which evaluates whether or not it is a valid reve
    (calculate-RPN (append select2Numbers l selectOp))]))
 (map to-rpn perms)
 
+I have also fully explained the code in the Racket file.
+
 ## Problems Encountered
 - Laptop freezing due to large amount of memory needed to process
 - Unable to reach final stage of requirements
 - Lack of Racket documentation
 
-## Conclusions
+## Conclusion
 In conclusion I was disappointed I was unable to reach the final stage of this project. Due to running into various problems and not managing my time correctly. If I was to do this project again I would keep tabs of the project throughut the development and maybe try it a different way as I seemed meet a lot of problems which unfortunately lead to being unable to finish it.
 
 ## References
