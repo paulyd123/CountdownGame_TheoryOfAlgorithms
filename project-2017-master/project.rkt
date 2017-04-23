@@ -41,8 +41,35 @@ numbers
 ;This creates an empty list to hold the 6 numbers chosen from the new list of numbers
 (define numChosen (list))
 
+(define select4Numbers (list));Creates list for selecting 4 numbers
+(define (randomListNumbers l);Creates list for random numbers  
+  (define randomNumber(list-ref l(random (length l))))  
+  (set! l(remove randomNumber l)) 
+  (set! select4Numbers (cons randomNumber select4Numbers))  
+  (if (= (length select4Numbers) 4)
+     select4Numbers ;Prints 4 random numbers
+      (randomListNumbers l))
+)
+
+
+
+
+(define select2Numbers (list));Creates list for selecting 4 numbers
+(define (randomListNumbers2 r);Creates list for random numbers  
+  (define randomNumber(list-ref r(random (length r))))  
+  (set! r(remove randomNumber r)) 
+  (set! select2Numbers (cons randomNumber select2Numbers))  
+  (if (= (length select2Numbers) 2)
+     select2Numbers ;Prints 4 random numbers
+      (randomListNumbers2 r))
+)
+
+(randomListNumbers numbers)
+(randomListNumbers2 numbers)
+
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
+
 
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
@@ -67,27 +94,7 @@ numbers
           (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
           (#f))))) ;true ot false
 
-(define select4Numbers (list));Creates list for selecting 4 numbers
-(define (randomListNumbers l);Creates list for random numbers  
-  (define randomNumber(list-ref l(random (length l))))  
-  (set! l(remove randomNumber l)) 
-  (set! select4Numbers (cons randomNumber select4Numbers))  
-  (if (= (length select4Numbers) 4)
-     select4Numbers ;Prints 4 random numbers
-      (randomListNumbers l))
-)
-(randomListNumbers numbers)
 
-(define select2Numbers (list));Creates list for selecting 4 numbers
-(define (randomListNumbers2 l);Creates list for random numbers  
-  (define randomNumber(list-ref l(random (length l))))  
-  (set! l(remove randomNumber l)) 
-  (set! select2Numbers (cons randomNumber select2Numbers))  
-  (if (= (length select2Numbers) 2)
-     select2Numbers ;Prints 4 random numbers
-      (randomListNumbers l))
-)
-(randomListNumbers numbers)
 
 
 
