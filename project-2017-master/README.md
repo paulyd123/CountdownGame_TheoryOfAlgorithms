@@ -19,6 +19,11 @@ During the research stage of my project I planned on how I would approach this p
 ## How To Run The Project
 In order to run this project you must first download Dr. Racket which you will find here [here](https://racket-lang.org/). Once Racket is downloaded, simply clone or download the file and open of the racket file. When the racket file opens select Run to view the output. Unfortunately I am unable to complete this project at the moment however I hope to fix this.
 
+## Reverse Polish Notation
+Our project was built around using RPN which is Reverse Polish Notation. Reverse Polish notation is a mathematical notation in which every operator follows all of its operands, in contrast to Polish notation (PN), which puts the operator before its operands. It is also known as postfix notation.
+
+![alt text](https://github.com/paulyd123/CountdownGame_TheoryOfAlgorithms/blob/master/project-2017-master/Image/RPN.png "Reverse Polish Notation example")
+
 ## Algorithms
 There were many different ways I could have approached this project and perhaps the way I did approach it was incorrect as I failed to get an output.
 However my aim was to first define the list of numbers that were to be used giving the label 'numbers'
@@ -94,6 +99,7 @@ I have also fully explained the code in the Racket file.
 - Unable to reach final stage of requirements
 - Lack of Racket documentation
 
+
 ## Conclusion
 In conclusion I was disappointed I was unable to reach the final stage of this project. Due to running into various problems and not managing my time correctly. If I was to do this project again I would keep tabs of the project throughut the development and maybe try it a different way as I seemed meet a lot of problems which unfortunately lead to being unable to finish it.
 
@@ -106,3 +112,4 @@ In conclusion I was disappointed I was unable to reach the final stage of this p
 - https://www.youtube.com/watch?v=bAZq8dg6xlc - Racket YouTube video
 - https://docs.racket-lang.org/reference/generic-numbers.html - Random function
 - http://stackoverflow.com/questions/14617095/how-to-use-append-map-in-racket-scheme - Mapping lists
+- https://en.wikipedia.org/wiki/Reverse_Polish_notation - RPN
