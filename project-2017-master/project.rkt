@@ -63,10 +63,30 @@ numbers
 )
 (randomListNumbers2 numbers);Outputs second random list
 
-
 ;Defines list of operations needed
 (define ops ( list '+ '- '* '/)) ; ' = Tells to use symbol not function
 
+(define selectOp (list));Creates list for selecting 4 numbers
+(define (randomListOp r);Creates list for random numbers  
+  (define randomOp(list-ref r(random (length r))))  
+  (set! r(remove randomOp r)) 
+  (set! selectOp (cons randomOp selectOp))  
+  (if (= (length selectOp) 1)
+     selectOp ;Prints 2 random numbers
+      (randomListOp r))
+)
+(randomListOp ops);Outputs second random list
+
+(define select3Ops (list));Creates list for selecting 4 numbers
+(define (randomListOps r);Creates list for random numbers  
+  (define randomOp(list-ref r(random (length r))))  
+  (set! r(remove randomOp r)) 
+  (set! select3Ops (cons randomOp select3Ops))  
+  (if (= (length select3Ops) 3)
+     select3Ops ;Prints 2 random numbers
+      (randomListOps r))
+)
+(randomListOps ops);Outputs second random list
 
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
