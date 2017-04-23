@@ -90,8 +90,8 @@ numbers
 (randomListOp ops);Outputs second random operation list
 
 ;Merging lists
-(define perms(remove-duplicates (permutations (append select4Numbers select2Numbers)))); select4Ops selectOp))))
-perms;Output list
+(define perms(remove-duplicates (permutations (append select4Numbers select4Ops)))); select4Ops select2Numbers selectOp))))
+;perms;Output list
 
 ;Used to calculate RPN, taken from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
 (define (calculate-RPN expr)
@@ -119,18 +119,16 @@ perms;Output list
           (valid-rpn? (cdr e) (+ s 1));Add one to the stack if its a valid rpn
       (if (> s 1);If s is less than 1
           (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
-          (#f))))) ;true ot false
+          #f)))) ;true ot false
 
 ;Function to make a perm into a rpn expression and calculates the expression if valid rpn
 ;(define (rpn-selected-numbers) list)
 ;(define (rpn-selected-operators) list)
 
-;(define (make-rpn l)
-;  (if(valid-rpn? (append (list 1 1) l (list '*)))
-;     (calculate-RPN(append (list 1 1) l (list '*)))
-;     #f)
-;  )
-
+(define (to-rpn l)
+  (cond [(valid-rpn? (append select2Numbers l selectOp))
+   (calculate-RPN (append select2Numbers l selectOp))]))
+(map to-rpn perms)
 
 
 
