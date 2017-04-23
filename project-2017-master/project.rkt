@@ -35,8 +35,8 @@ numbers
 ;Random number generator that generates a number between the max and the min which is 100 to 1000
 (define rand(random 101 1000))
 
-;Outputs random number between 100 and 1000
-rand
+;Outputs random number between 100 and 1000 with Targer label
+(write 'Target:) rand
 
 ;This creates an empty list to hold the 6 numbers chosen from the new list of numbers
 (define numChosen (list))
@@ -67,6 +67,18 @@ rand
           (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
           (#f))))) ;true ot false
 
+(define select4Numbers (list))
+
+(define (randomListNumbers l)
+  
+  (define randomNumber(list-ref l(random (length l))))  
+  (set! l(remove randomNumber l)) 
+  (set! select4Numbers (cons randomNumber select4Numbers))  
+  (if (= (length select4Numbers) 4)
+     select4Numbers ;print numSelection
+      (randomListNumbers l))
+)
+(randomListNumbers numbers)
 
 
 
