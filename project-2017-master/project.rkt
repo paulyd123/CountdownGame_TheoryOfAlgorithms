@@ -67,15 +67,24 @@ numbers
           (valid-rpn? (cdr e) (- s 1));Take 1 off the stack
           (#f))))) ;true ot false
 
-(define select4Numbers (list))
-
-(define (randomListNumbers l)
-  
+(define select4Numbers (list));Creates list for selecting 4 numbers
+(define (randomListNumbers l);Creates list for random numbers  
   (define randomNumber(list-ref l(random (length l))))  
   (set! l(remove randomNumber l)) 
   (set! select4Numbers (cons randomNumber select4Numbers))  
   (if (= (length select4Numbers) 4)
-     select4Numbers ;print numSelection
+     select4Numbers ;Prints 4 random numbers
+      (randomListNumbers l))
+)
+(randomListNumbers numbers)
+
+(define select2Numbers (list));Creates list for selecting 4 numbers
+(define (randomListNumbers2 l);Creates list for random numbers  
+  (define randomNumber(list-ref l(random (length l))))  
+  (set! l(remove randomNumber l)) 
+  (set! select2Numbers (cons randomNumber select2Numbers))  
+  (if (= (length select2Numbers) 2)
+     select2Numbers ;Prints 4 random numbers
       (randomListNumbers l))
 )
 (randomListNumbers numbers)
