@@ -13,8 +13,13 @@ For this project we were asked to create a countdown numbers game which consists
 
 <br> Four basic operations; add, subtract, multiply and divide must be used along with 6 random numbers from the list above to calculate the target number if possible. Not all the number have to be used and if the same number appears twice in the list then that number can be used twice. 
 
+## Project Planning
+During the research stage of my project I planned on how I would approach this project. I planned on generating a random number between 100 and 1000 and then generating a list of 6 numbers which would be used along with 4 random operations in order to reach a specific number.
+
 ## How To Run The Project
 In order to run this project you must first download Dr. Racket which you will find here [here](https://racket-lang.org/). Once Racket is downloaded, simply clone or download the file and open of the racket file. When the racket file opens select Run to view the output. Unfortunately I am unable to complete this project at the moment however I hope to fix this.
+
+## Algorithms
 
 ## Project Development
 There were many different ways I could have approached this project and perhaps the way I did approach it was incorrect as I failed to get an output.
@@ -83,3 +88,10 @@ What comes next is a condition which evaluates whether or not it is a valid reve
   (cond [(valid-rpn? (append select2Numbers l selectOp))
    (calculate-RPN (append select2Numbers l selectOp))]))
 (map to-rpn perms)
+
+
+## References
+- https://racket-lang.org/ - Racket documentation
+- http://stackoverflow.com/questions/28440442/how-to-merge-2-lists-into-one-in-racket - Merging lists
+- https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm - RPN Calculator
+- http://beautifulracket.com/stacker/ - Help with stacks
