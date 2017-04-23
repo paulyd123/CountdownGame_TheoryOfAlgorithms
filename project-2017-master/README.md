@@ -20,8 +20,6 @@ During the research stage of my project I planned on how I would approach this p
 In order to run this project you must first download Dr. Racket which you will find here [here](https://racket-lang.org/). Once Racket is downloaded, simply clone or download the file and open of the racket file. When the racket file opens select Run to view the output. Unfortunately I am unable to complete this project at the moment however I hope to fix this.
 
 ## Algorithms
-
-## Project Development
 There were many different ways I could have approached this project and perhaps the way I did approach it was incorrect as I failed to get an output.
 However my aim was to first define the list of numbers that were to be used giving the label 'numbers'
 
@@ -89,9 +87,20 @@ What comes next is a condition which evaluates whether or not it is a valid reve
    (calculate-RPN (append select2Numbers l selectOp))]))
 (map to-rpn perms)
 
+## Problems Encountered
+- Laptop freezing due to large amount of memory needed to process
+- Unable to reach final stage of requirements
+- Lack of Racket documentation
+
+## Conclusions
+In conclusion I was disappointed I was unable to reach the final stage of this project. Due to running into various problems and not managing my time correctly. If I was to do this project again I would keep tabs of the project throughut the development and maybe try it a different way as I seemed meet a lot of problems which unfortunately lead to being unable to finish it.
 
 ## References
 - https://racket-lang.org/ - Racket documentation
 - http://stackoverflow.com/questions/28440442/how-to-merge-2-lists-into-one-in-racket - Merging lists
 - https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm - RPN Calculator
 - http://beautifulracket.com/stacker/ - Help with stacks
+- http://stackoverflow.com/questions/20319593/creating-permutation-of-a-list-in-scheme - Permutations
+- https://www.youtube.com/watch?v=bAZq8dg6xlc - Racket YouTube video
+- https://docs.racket-lang.org/reference/generic-numbers.html - Random function
+- http://stackoverflow.com/questions/14617095/how-to-use-append-map-in-racket-scheme - Mapping lists
